@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- <HomePage/> -->
+    <!-- <OptionsPage/> -->
+    <!-- <TestPage/> -->
+    <!-- <InfoPage/> -->
+
+    <!-- {{ testVar }} -->
+    hello
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import store from './store/index';
+
+// import { HomePage } from './components/HomePage.vue'
+// import { OptionsPage } from './components/OptionsPage.vue'
+// import { TestPage } from './components/TestPage.vue'
+// import { InfoPage } from './components/InfoPage.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  // components: {
+    // HomePage,
+    // OptionsPage,
+    // TestPage,
+    // InfoPage
+  // },
+  // store,
+  // computed: {
+    // testVar() {
+    //   return this.$store.state.varForTest
+    // },
+  // }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
