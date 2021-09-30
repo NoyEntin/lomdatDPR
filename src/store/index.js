@@ -1,8 +1,8 @@
-// import { createStore } from 'vuex';
-// // import { createApp } from 'vue'
+import { createStore } from 'vuex';
+// import { createApp } from 'vue'
 
-// export default createStore({
-//         state: {
-//             varForTest: 3
-//         },
-// });
+export default createStore({
+        state: {
+            varForTest: 3
+        },
+});
