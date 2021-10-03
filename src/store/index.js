@@ -1,8 +1,25 @@
 import { createStore } from 'vuex';
-// import { createApp } from 'vue'
 
 export default createStore({
-        state: {
-            varForTest: 3
+    state: {
+        pagesNames: ["HomePage", "OptionsPage", "TestPage"],
+        currentPage: 0,
+        currentPageHeading: "",
+        testType: -1
+
+    },
+    getters: {
+
+    },
+    mutations: {
+        changePage(state, newPage) {
+            state.currentPage = newPage;
         },
+        changePageHeading(state, newHeahing) {
+            state.currentPageHeading = newHeahing;
+        }
+    },
+    actions: {
+
+    }
 });

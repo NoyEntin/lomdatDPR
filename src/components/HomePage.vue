@@ -1,14 +1,14 @@
 <template>
-  <div class="hello">
+  <div>
     <p>
       עמוד הבית
     </p>
 
     <div class="btn-container">
-      <div class="regular-btn-container">
+      <div class="regular-btn" @click="goToOptions(1, 'מבחן סימולציה')">
         <p>מבחני סימולציה</p>
       </div>
-      <div class="regular-btn-container">
+      <div class="regular-btn" @click="goToOptions(1, 'תרגול לפי פרקים')">
         <p>תרגול לפי פרקים</p>
       </div>
     </div>
@@ -19,6 +19,20 @@
 <script>
 export default {
   name: 'HomePage',
+  data() {
+    return {
+
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+    goToOptions(newPage, newPageHeading) {
+      this.$store.commit('changePage', newPage);
+      this.$store.commit('changePageHeading', newPageHeading);
+    }
+  }
 }
 </script>
 

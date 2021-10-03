@@ -57,6 +57,17 @@ body {
     width: 100%;
     height: 10vh;
     background-color: var(--skyblue);
+}
+
+.top-bar-heading {
+    margin: 0%;
+    position: absolute;
+    line-height: 10vh;
+    font-size: 2em;
+    text-indent: 3vh;
+}
+
+.top-bar-btn-container {
     display: flex;
     flex-flow: row-reverse;
 }
@@ -67,6 +78,7 @@ body {
     margin: 1.5vh;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .home-btn {
@@ -78,19 +90,24 @@ body {
     background-image: url("media/graphics/info.png");
 }
 
-.regular-btn-container {
+.regular-btn {
     height: 3em;
     width: fit-content;
     padding: 0px 30px;
     border-radius: 999em;
     background-color: var(--Sapphire-blue);
     color: var(--white);
+    cursor: pointer;
 
     line-height: 3em;
     text-align: center;
     margin: 3%;
 }
 
-.regular-btn-container p {
+.regular-btn:hover {
+    background-color: var(--light-Sapphire-blue);
+}
+
+.regular-btn p {
     margin: 0vh;
 }
