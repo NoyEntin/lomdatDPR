@@ -3,25 +3,15 @@
     <div class="page">
       <h1>כותרת</h1>
       <p>קצת הסבר?</p>
-      <div class="row-selection-container">
+      <div class="row-selection-container" v-if="testType === 'תרגול לפי פרקים'">
         <div class="text-selection-container">
           <p><b>בחר פרק</b></p>
         </div>
         <div class="test-selection-container">
-          <div class="selection-circle-container">
-            <div class="selection-circle-text chapter-circle-text"><div>אנלוגיה מילולית</div></div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text chapter-circle-text"><div>חשיבה כמותית</div></div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text chapter-circle-text"><div>הבנת הוראות</div></div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text chapter-circle-text"><div>אנלוגיה צורנית</div></div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text chapter-circle-text"><div>מבחן צורני חדש</div></div>
+          <div class="selection-circle-container" v-for="(chapterName, index) in chapterNames" :key="chapterName" @click="changeOption('chapter', index)">
+            <div class="selection-circle-text chapter-circle-text">
+              <div><b>{{ chapterName }}</b></div>
+            </div>
           </div>
         </div>
       </div>
@@ -31,23 +21,8 @@
           <p>עוד איזשהוא טקסט</p>
         </div>
         <div class="test-selection-container">
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">1</div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">2</div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">3</div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">4</div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">5</div>
-          </div>
-          <div class="selection-circle-container">
-            <div class="selection-circle-text">6</div>
+          <div class="selection-circle-container" v-for="index in numOfTestsWIP" :key="index" @click="changeOption('test', index)">
+            <div class="selection-circle-text">{{ index }}</div>
           </div>
         </div>
       </div>
@@ -57,7 +32,7 @@
             <p><b>בחר מבחן:</b></p>
             <p>עוד איזשהוא טקסט</p>
           </div>
-          <div class="selection-circle-container">
+          <div class="selection-circle-container" :class="{ 'active-option': isTimeActice }" @click="changeOption('time', -1)">
             <div class="time-selection-img"></div>
           </div>
         </div>
@@ -66,9 +41,14 @@
             <p><b>בחר מבחן:</b></p>
             <p>עוד איזשהוא טקסט</p>
           </div>
-          <div class="selection-circle-container">
+          <div class="selection-circle-container" :class="{ 'active-option': isFeedbackActice }" @click="changeOption('feedback', -1)">
             <div class="feedback-selection-img"></div>
           </div>
+        </div>
+      </div>
+      <div class="regular-btn-container">
+        <div class="regular-btn" @click="startTest(2)">
+          <p>התחל מבחן</p>
         </div>
       </div>
     </div>
@@ -78,10 +58,39 @@
 <script>
 export default {
   name: "Options",
+  data() {
+    return {
+      numOfTestsWIP: 6,
+    }
+  },
+  methods: {
+    changeOption(currentOption, index) {
+      let dataToPass = [currentOption, index]
+      this.$store.commit('changeOption', dataToPass);
+    },
+    startTest(newPage) {
+      this.$store.commit('changePage', newPage);
+    }
+  },
+  computed: {
+    testType() {
+      return this.$store.state.currentPageHeading;
+    },
+    chapterNames() {
+      return this.$store.state.chapterNames;
+    },
+    isTimeActice() {
+      return this.$store.state.isOnTime;
+      },
+    isFeedbackActice() {
+      return this.$store.state.isImmediateFeedback;
+      }
+  }
 };
 </script>
 
 <style>
+
 .page-container {
   display: flex;
   justify-content: center;
@@ -89,9 +98,9 @@ export default {
 
 .page {
   width: 70%;
+  max-width: 1000px;
   margin-right: 10%;
-  /* position: relative; */
-  /* right: 15%; */
+  text-align: right;
 }
 
 .row-selection-container {
@@ -138,13 +147,19 @@ export default {
 }
 
 .chapter-circle-text {
-  /* width: 4em; */
-  /* height: 4em; */
+  width: 2em;
+  height: 2em;
+  position: relative;
 }
 
 .chapter-circle-text div {
   font-size: 0.4em;
   line-height: 1.5em;
+  height: fit-content;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .time-selection-img {
@@ -160,4 +175,14 @@ export default {
   height: 3.5em;
   background-size: contain;
 }
+
+.regular-btn-container {
+  display: flex;
+  justify-content: end;
+}
+
+.active-option {
+  background-color: var(--Sapphire-blue);
+}
+
 </style>

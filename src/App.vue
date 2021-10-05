@@ -9,8 +9,7 @@
     </div>
 
     <component :is="currentPageComponent"></component>
-    <infoPage v-if="isInfoShowing" />
-
+    <infoPage v-if="isInfoShowing" :onXClick="CloseInfo" />
   </div>
 </template>
 
@@ -48,6 +47,9 @@ export default {
     changePage(newPage, newPageHeading) {
       this.$store.commit("changePage", newPage);
       this.$store.commit("changePageHeading", newPageHeading);
+    },
+    CloseInfo() {
+      this.isInfoShowing = !this.isInfoShowing;
     },
   },
 };

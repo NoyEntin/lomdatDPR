@@ -41,16 +41,28 @@
     font-weight: 100;
 }
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     height: 100%;
     width: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
     background-color: var(--white);
     font-family: Rubik-Regular;
     font-weight: 100;
     font-size: 1em;
     line-height: 1.8em;
+
+    background-image: url("./media/graphics/background.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% 20%;
+    /* background-size: contain; */
+    background-position-y: bottom;
 }
 
 .top-bar {
@@ -101,6 +113,7 @@ body {
 
     line-height: 3em;
     text-align: center;
+    font-size: 1.2em;
     margin: 3%;
 }
 
