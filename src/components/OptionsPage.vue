@@ -1,54 +1,82 @@
 <template>
-  <div class="page-container">
-    <div class="page">
-      <h1>כותרת</h1>
-      <p>קצת הסבר?</p>
-      <div class="row-selection-container" v-if="testType === 'תרגול לפי פרקים'">
-        <div class="text-selection-container">
-          <p><b>בחר פרק</b></p>
-        </div>
-        <div class="test-selection-container">
-          <div class="selection-circle-container" v-for="(chapterName, index) in chapterNames" :key="chapterName" @click="changeOption('chapter', index)">
-            <div class="selection-circle-text chapter-circle-text">
-              <div><b>{{ chapterName }}</b></div>
+  <div class="component-container">
+    <div class="page-container">
+      <div class="page">
+        <h1>כותרת</h1>
+        <p>קצת הסבר?</p>
+
+        <div
+          class="row-selection-container"
+          v-if="testType === 'תרגול לפי פרקים'"
+        >
+          <div class="text-selection-container">
+            <p><b>בחר פרק</b></p>
+          </div>
+          <div class="test-selection-container">
+            <div
+              class="selection-circle-container"
+              v-for="(chapterName, index) in chapterNames"
+              :key="chapterName"
+              :class="['chapter-' + index]"
+              @click="changeOption('chapter', index)"
+            >
+              <!-- :class="{ ['active-chapter-' + index]: SelectedChapter }" -->
+              <div class="selection-circle-text chapter-circle-text">
+                <div>
+                  <b>{{ chapterName }}</b>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row-selection-container">
-        <div class="text-selection-container">
-          <p><b>בחר מבחן:</b></p>
-          <p>עוד איזשהוא טקסט</p>
-        </div>
-        <div class="test-selection-container">
-          <div class="selection-circle-container" v-for="index in numOfTestsWIP" :key="index" @click="changeOption('test', index)">
-            <div class="selection-circle-text">{{ index }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="row-selection-container">
-        <div class="col-selection-container">
-          <div class="col-text-selection-container">
+        <div class="row-selection-container">
+          <div class="text-selection-container">
             <p><b>בחר מבחן:</b></p>
             <p>עוד איזשהוא טקסט</p>
           </div>
-          <div class="selection-circle-container" :class="{ 'active-option': isTimeActice }" @click="changeOption('time', -1)">
-            <div class="time-selection-img"></div>
+          <div class="test-selection-container">
+            <div
+              class="selection-circle-container"
+              v-for="index in numOfTestsWIP"
+              :key="index"
+              @click="changeOption('test', index)"
+            >
+              <div class="selection-circle-text">{{ index }}</div>
+            </div>
           </div>
         </div>
-        <div class="col-selection-container">
-          <div class="col-text-selection-container">
-            <p><b>בחר מבחן:</b></p>
-            <p>עוד איזשהוא טקסט</p>
+        <div class="row-selection-container">
+          <div class="col-selection-container">
+            <div class="col-text-selection-container">
+              <p><b>בחר מבחן:</b></p>
+              <p>עוד איזשהוא טקסט</p>
+            </div>
+            <div
+              class="selection-circle-container"
+              :class="{ 'active-option': isTimeActice }"
+              @click="changeOption('time', -1)"
+            >
+              <div class="time-selection-img"></div>
+            </div>
           </div>
-          <div class="selection-circle-container" :class="{ 'active-option': isFeedbackActice }" @click="changeOption('feedback', -1)">
-            <div class="feedback-selection-img"></div>
+          <div class="col-selection-container">
+            <div class="col-text-selection-container">
+              <p><b>בחר מבחן:</b></p>
+              <p>עוד איזשהוא טקסט</p>
+            </div>
+            <div
+              class="selection-circle-container"
+              :class="{ 'active-option': isFeedbackActice }"
+              @click="changeOption('feedback', -1)"
+            >
+              <div class="feedback-selection-img"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="regular-btn-container">
-        <div class="regular-btn" @click="startTest(2)">
-          <p>התחל מבחן</p>
+        <div class="regular-btn-container">
+          <div class="regular-btn" @click="startTest(2)">
+            <p>התחל מבחן</p>
+          </div>
         </div>
       </div>
     </div>
@@ -61,16 +89,16 @@ export default {
   data() {
     return {
       numOfTestsWIP: 6,
-    }
+    };
   },
   methods: {
     changeOption(currentOption, index) {
-      let dataToPass = [currentOption, index]
-      this.$store.commit('changeOption', dataToPass);
+      let dataToPass = [currentOption, index];
+      this.$store.commit("changeOption", dataToPass);
     },
     startTest(newPage) {
-      this.$store.commit('changePage', newPage);
-    }
+      this.$store.commit("changePage", newPage);
+    },
   },
   computed: {
     testType() {
@@ -81,16 +109,21 @@ export default {
     },
     isTimeActice() {
       return this.$store.state.isOnTime;
-      },
+    },
     isFeedbackActice() {
       return this.$store.state.isImmediateFeedback;
-      }
-  }
+    },
+    SelectedChapter() {
+      return this.$store.state.SelectedChapter;
+    },
+    SelectedTest() {
+      return this.$store.state.SelectedTest;
+    },
+  },
 };
 </script>
 
-<style>
-
+<style scoped>
 .page-container {
   display: flex;
   justify-content: center;
@@ -185,4 +218,19 @@ export default {
   background-color: var(--Sapphire-blue);
 }
 
+.chapter-0 {
+  border: 0.3em var(--red) solid;
+}
+.chapter-1 {
+  border: 0.3em var(--yellow) solid;
+}
+.chapter-2 {
+  border: 0.3em var(--green) solid;
+}
+.chapter-3 {
+  border: 0.3em var(--blue) solid;
+}
+.chapter-4 {
+  border: 0.3em var(--purple) solid;
+}
 </style>

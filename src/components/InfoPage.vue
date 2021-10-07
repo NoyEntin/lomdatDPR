@@ -3,36 +3,39 @@
     <div class="dark" @click="onXClick"></div>
     <div class="info-container">
       <div class="info-nav-container">
-        <div class="tab-shape">
+        <!-- <div> -->
           <svg preserveAspectRatio="none" viewBox="0 0 300 100">
             <path
               d="M 0 0 L 240 0 L 300 50 L 240 100 L 0 100 L 0 0"
               fill="var(--light-skyblue)"
             ></path>
           </svg>
-          <p>לדוגמא:</p>
-        </div>
-        <div class="tab-shape">
+        <!-- </div> -->
+        <!-- <div> -->
           <svg preserveAspectRatio="none" viewBox="0 0 300 100">
             <path
               d="M 0 0 L 240 0 L 300 50 L 240 100 L 0 100 L 0 0"
               fill="var(--light-skyblue)"
             ></path>
           </svg>
-          <p>לדוגמא:</p>
-        </div>
-        <div class="tab-shape">
+        <!-- </div> -->
+        <!-- <div> -->
           <svg preserveAspectRatio="none" viewBox="0 0 300 100">
             <path
               d="M 0 0 L 240 0 L 300 50 L 240 100 L 0 100 L 0 0"
               fill="var(--light-skyblue)"
             ></path>
           </svg>
-          <p>לדוגמא:</p>
-        </div>
+        <!-- </div> -->
+            <div class="nav-text-container">
+                <p>מספר 1</p>
+                <p>מספר 2</p>
+                <p>מספר 3</p>
+            </div>
       </div>
       <div class="main-info">
         <h2>הסבר סימולציית מבחן</h2>
+        <div class="main-text-container">
         <p>
           חול עתידיים ובפרט מתקנים בדיקת צורך על העוסקת הלוחמים מייצגים, מצביאים
           בדיקת אחרת כאשר מודלים שונים סימולציה כדי בהתנהגותה גרעיני. משטח מאשר
@@ -47,6 +50,7 @@
           טייסים לייצג במערכת, השערות בסימולטור מציאות והסבר דוגמאות בידור
           מאפיינים לחוות.
         </p>
+        </div>
       </div>
       <div class="x-btn" @click="onXClick">x</div>
     </div>
@@ -68,6 +72,11 @@ export default {
 </script>
 
 <style>
+
+html, body {
+    overflow: hidden;
+}
+
 .dark {
   position: absolute;
   top: 0%;
@@ -118,13 +127,40 @@ export default {
 
   display: flex;
   flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+svg {
+    height: 3em;
+    margin-bottom: 2vh;
+
+    width: 100%;
+}
+
+.nav-text-container {
+    width: 15%;
+    position: absolute;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+}
+
+.nav-text-container p {
+    height: 3em;
+    margin: 0vh 3vh 2vh 0vh;
+    /* margin-bottom: 2vh; */
+    line-height: 3em;
+}
+
+.info-nav-container p {
+    /* position: absolute; */
 }
 
 .tab-shape {
   /* margin: 15% 0%; */
   /* width: 100%; */
-  height: 1em;
-  position: relative;
+  /* height: 1em; */
+  /* position: relative; */
 }
 
 .tab-shape p {
@@ -144,5 +180,9 @@ export default {
   /* border-radius: 30px; */
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+}
+
+.main-text-container {
+    overflow: auto;
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div id="app">
     <div class="top-bar">
       <h1 class="top-bar-heading">{{ currentPageHeading }}</h1>
       <div class="top-bar-btn-container">
         <div class="home-btn top-bar-btn" @click="changePage(0, '')"></div>
-        <div class="info-btn top-bar-btn" @click="isInfoShowing = true"></div>
+        <div class="info-btn top-bar-btn" @click="toglleInfo"></div>
       </div>
     </div>
 
     <component :is="currentPageComponent"></component>
-    <infoPage v-if="isInfoShowing" :onXClick="CloseInfo" />
+    <infoPage v-if="isInfoShowing" :onXClick="toglleInfo" />
   </div>
 </template>
 
@@ -32,7 +32,6 @@ export default {
   // store,
   data() {
     return {
-      isInfoShowing: false,
     };
   },
   computed: {
@@ -42,15 +41,18 @@ export default {
     currentPageHeading() {
       return this.$store.state.currentPageHeading;
     },
+    isInfoShowing() {
+      return this.$store.state.isInfoShowing;
+    }
   },
   methods: {
     changePage(newPage, newPageHeading) {
       this.$store.commit("changePage", newPage);
       this.$store.commit("changePageHeading", newPageHeading);
     },
-    CloseInfo() {
-      this.isInfoShowing = !this.isInfoShowing;
-    },
+    toglleInfo() {
+      this.$store.commit("toggleInfo");
+    }
   },
 };
 </script>

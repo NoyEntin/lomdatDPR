@@ -7,10 +7,13 @@ export default createStore({
         pagesNames: ["HomePage", "OptionsPage", "TestPage"],
         currentPage: 0,
         currentPageHeading: "",
+        isInfoShowing: false,
         testType: -1,
         chapterNames: ["אנלוגיה מילולית", "חשיבה כמותית", "הבנת הוראות", "אנלוגיה צורנית", "מבחן צורני חדש"],
         isOnTime: true,
         isImmediateFeedback: false,
+        SelectedChapter: -1,
+        selectedTest: -1,
 
         allTestQuestions: allTestQuestions,
 
@@ -24,6 +27,9 @@ export default createStore({
         },
         changePageHeading(state, newHeahing) {
             state.currentPageHeading = newHeahing;
+        },
+        toggleInfo(state) {
+            state.isInfoShowing = !state.isInfoShowing;
         },
         changeOption(state, dataPassed) {
             let optionToChange = dataPassed[0]
