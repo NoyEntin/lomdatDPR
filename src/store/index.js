@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 
-import allTestQuestions from './testQuestions.json';
+// import allTestQuestions from './testQuestions.json';
+import ChapterTestQuestions from './ChapterTestQuestions.json';
 
 export default createStore({
     state: {
@@ -8,14 +9,15 @@ export default createStore({
         currentPage: 0,
         currentPageHeading: "",
         isInfoShowing: false,
-        testType: -1,
         chapterNames: ["אנלוגיה מילולית", "חשיבה כמותית", "הבנת הוראות", "אנלוגיה צורנית", "מבחן צורני חדש"],
+        
+        testType: -1,
+        SelectedChapter: 0,
+        selectedTest: 0,
         isOnTime: true,
         isImmediateFeedback: false,
-        SelectedChapter: -1,
-        selectedTest: -1,
 
-        allTestQuestions: allTestQuestions,
+        ChapterTestQuestions: ChapterTestQuestions,
 
     },
     getters: {

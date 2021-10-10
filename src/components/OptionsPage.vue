@@ -5,6 +5,12 @@
         <h1>כותרת</h1>
         <p>קצת הסבר?</p>
 
+        <!-- ChapterTestQuestions -->
+        <br>
+        {{ ChapterTestQuestions[0] }}
+        <br>
+        <!-- {{ ChapterTestQuestions[SelectedChapter].length }} -->
+
         <div
           class="row-selection-container"
           v-if="testType === 'תרגול לפי פרקים'"
@@ -88,7 +94,9 @@ export default {
   name: "Options",
   data() {
     return {
-      numOfTestsWIP: 6,
+      // test: this.ChapterTestQuestions,
+      // numOfTestsWIP: this.ChapterTestQuestions[this.SelectedChapter],
+      // numOfTestsWIP: this.ChapterTestQuestions[0],
     };
   },
   methods: {
@@ -118,6 +126,9 @@ export default {
     },
     SelectedTest() {
       return this.$store.state.SelectedTest;
+    },
+    ChapterTestQuestions() {
+      return this.$store.state.ChapterTestQuestions;
     },
   },
 };
@@ -232,5 +243,31 @@ export default {
 }
 .chapter-4 {
   border: 0.3em var(--purple) solid;
+}
+
+.chapter-0:hover {
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(255, 173, 173, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(255, 173, 173, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(255, 173, 173, 0.6);
+}
+.chapter-1:hover {
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(249, 246, 144, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(249, 246, 144, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(249, 246, 144, 0.6);
+}
+.chapter-2:hover {
+    -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
+}
+.chapter-3:hover {
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(155, 246, 255, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(155, 246, 255, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(155, 246, 255, 0.6);
+}
+.chapter-4:hover {
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(189, 178, 255, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(189, 178, 255, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(189, 178, 255, 0.6);
 }
 </style>

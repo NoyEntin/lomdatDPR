@@ -1,4 +1,4 @@
-[
+let testQuestions = [
     {
         "question": "שאלה מספר 1",
         "answers": [

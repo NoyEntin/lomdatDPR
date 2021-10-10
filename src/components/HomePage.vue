@@ -100,8 +100,8 @@ export default {
 }
 
 .page-2 {
-  position: absolute;
-  top: 100vh;
+  /* position: absolute; */
+  /* top: 100vh; */
   /* scroll-snap-align: start; */
   /* scroll-snap-stop: always */
 }
@@ -142,6 +142,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-weight: bold;
 }
 
 .chapter-circle-text {
