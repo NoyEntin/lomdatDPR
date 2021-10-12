@@ -56,14 +56,12 @@ export default {
     chapterNames() {
       return this.$store.state.chapterNames;
     },
-    // isInfoShowing() {
-    //   return this.$store.state.isInfoShowing;
-    // }
   },
   methods: {
     goToOptions(newPage, newPageHeading) {
       this.$store.commit("changePage", newPage);
       this.$store.commit("changePageHeading", newPageHeading);
+      this.$store.commit("changeTestType", newPageHeading);
     },
     openInfo(chapterName, index) {
       this.$store.commit("toggleInfo", chapterName, index);
@@ -97,6 +95,10 @@ export default {
   /* scroll-snap-stop: always; */
 
   /* background-color: sandybrown; */
+}
+
+.page {
+  text-align: center;
 }
 
 .page-2 {

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="top-bar">
-      <h1 class="top-bar-heading">{{ currentPageHeading }}</h1>
+      <h1 class="top-bar-heading">{{ testType }}</h1>
+      <!-- <h1 class="top-bar-heading">{{ currentPageHeading }}</h1> -->
       <div class="top-bar-btn-container">
         <div class="home-btn top-bar-btn" @click="changePage(0, '')"></div>
         <div class="info-btn top-bar-btn" @click="toglleInfo"></div>
@@ -43,6 +44,10 @@ export default {
     },
     isInfoShowing() {
       return this.$store.state.isInfoShowing;
+    },
+
+    testType() {
+      return this.$store.state.testType;
     }
   },
   methods: {

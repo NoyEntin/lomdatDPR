@@ -4,7 +4,7 @@
       <div class="nav-menu"></div>
       <div class="page">
         <div class="timer-container" v-if="isTimeActice">זמן לשאלה</div>
-        <p><b>שאלה מהמערך:</b></p>
+        <!-- <p class="bold" v-html=""></p> -->
         <div class="answer-container">
           <div class="answer" v-for="index in numOfAnswersWIP" :key="index">
             {{ index }}
@@ -27,11 +27,26 @@ export default {
     };
   },
   computed: {
+    testType() {
+      return this.$store.state.currentPageHeading;
+    },
+    chapterNames() {
+      return this.$store.state.chapterNames;
+    },
     isTimeActice() {
       return this.$store.state.isOnTime;
     },
     isFeedbackActice() {
       return this.$store.state.isImmediateFeedback;
+    },
+    selectedChapter() {
+      return this.$store.state.selectedChapter;
+    },
+    selectedTest() {
+      return this.$store.state.selectedTest;
+    },
+    chapterTestQuestions() {
+      return this.$store.state.ChapterTestQuestions;
     },
   },
 };

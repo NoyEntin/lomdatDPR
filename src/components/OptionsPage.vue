@@ -2,13 +2,8 @@
   <div class="component-container">
     <div class="page-container">
       <div class="page">
-        <h1 @click="stateTest">כותרת</h1>
+        <h1>כותרת</h1>
         <p>קצת הסבר?</p>
-
-        <!-- {{chapterTestQuestions[0][0]}} -->
-        <!-- <br> -->
-        {{chapterTestQuestions[currentChapter][0].length}}
-
         <div
           class="row-selection-container"
           v-if="testType === 'תרגול לפי פרקים'"
@@ -21,10 +16,12 @@
               class="selection-circle-container"
               v-for="(chapterName, index) in chapterNames"
               :key="chapterName"
-              :class="['chapter-' + index]"
-              @click="changeOption('chapter', index)"
+              :class="[
+                'chapter-' + index,
+                { ['active-chapter-' + index]: index === selectedChapter },
+              ]"
+              @click="changeOption('chapter', index), resetSelectedTest()"
             >
-              <!-- :class="{ ['active-chapter-' + index]: selectedChapter }" -->
               <div class="selection-circle-text chapter-circle-text">
                 <div>
                   <b>{{ chapterName }}</b>
@@ -41,9 +38,10 @@
           <div class="test-selection-container">
             <div
               class="selection-circle-container"
-              v-for="index in chapterTestQuestions[currentChapter][0].length"
               :key="index"
               @click="changeOption('test', index)"
+              :class="{ 'active-option': index === selectedTest }"
+              v-for="index in chapterTestQuestions[selectedChapter].length"
             >
               <div class="selection-circle-text">{{ index }}</div>
             </div>
@@ -92,8 +90,8 @@ export default {
   name: "Options",
   data() {
     return {
-      currentChapter: 0,
-      currentTest: 0,
+      // currentChapter: 0,
+      // currentTest: 1,
     };
   },
   methods: {
@@ -102,19 +100,13 @@ export default {
       console.log(dataToPass);
       this.$store.commit("changeOption", dataToPass);
     },
+    resetSelectedTest() {
+      this.changeOption('test', 1);
+    },
     startTest(newPage) {
       this.$store.commit("changePage", newPage);
+      this.$store.commit("setUserTestQuestions");
     },
-    stateTest() {
-      console.log("in state test");
-
-      // console.log(this.chapterTestQuestions[0][0]);
-      // console.log(this.chapterTestQuestions[0][0].length);
-      // console.log(this.chapterTestQuestions[0][this.selectedChapter].length);
-
-      console.log("testType: " + this.testType);
-      console.log("selectedChapter: " + this.selectedChapter);
-    }
   },
   computed: {
     testType() {
@@ -199,6 +191,7 @@ export default {
 }
 
 .chapter-circle-text {
+  /* font-weight: bold; */
   width: 2em;
   height: 2em;
   position: relative;
@@ -253,6 +246,22 @@ export default {
   border: 0.3em var(--purple) solid;
 }
 
+.active-chapter-0 {
+  background-color: var(--red);
+}
+.active-chapter-1 {
+  background-color: var(--yellow);
+}
+.active-chapter-2 {
+  background-color: var(--green);
+}
+.active-chapter-3 {
+  background-color: var(--blue);
+}
+.active-chapter-4 {
+  background-color: var(--purple);
+}
+
 .selection-circle-container:hover {
   -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(8, 96, 144, 0.6);
   -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(8, 96, 144, 0.6);
@@ -269,7 +278,7 @@ export default {
   box-shadow: 0 0 0.1px 0.8vmin rgba(249, 246, 144, 0.6);
 }
 .chapter-2:hover {
-    -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
   -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
   box-shadow: 0 0 0.1px 0.8vmin rgba(187, 255, 173, 0.6);
 }

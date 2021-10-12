@@ -13,15 +13,19 @@ export default createStore({
         
         testType: -1,
         selectedChapter: 0,
-        selectedTest: 0,
+        selectedTest: 1,
         isOnTime: true,
         isImmediateFeedback: false,
 
         ChapterTestQuestions: ChapterTestQuestions,
 
+        userTestQuestions: [],
+
     },
     getters: {
+        // selectedTestQuestion: state => {
 
+        // }
     },
     mutations: {
         changePage(state, newPage) {
@@ -29,6 +33,9 @@ export default createStore({
         },
         changePageHeading(state, newHeahing) {
             state.currentPageHeading = newHeahing;
+        },
+        changeTestType(state, newType) {
+            state.testType = newType;
         },
         toggleInfo(state) {
             state.isInfoShowing = !state.isInfoShowing;
@@ -53,6 +60,14 @@ export default createStore({
                 default:
                     break;
             }
+        },
+        setUserTestQuestions(state) {
+            if (state.testType === 'תרגול לפי פרקים') {
+                for (let i = 0; i < state.ChapterTestQuestions[state.selectedChapter][state.selectedTest].length; i++) {
+                    state.userTestQuestions.push(state.ChapterTestQuestions[state.selectedChapter][state.selectedTest][i]);
+                }
+            }
+            console.log(state.userTestQuestions);
         }
     },
     actions: {

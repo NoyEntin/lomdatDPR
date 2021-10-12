@@ -65,6 +65,10 @@ body {
     background-position-y: bottom;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .component-container {
     position: absolute;
     width: 100%;
