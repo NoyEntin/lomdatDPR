@@ -2,14 +2,12 @@
   <div class="component-container">
     <div class="page-container">
       <div class="page">
-        <h1>כותרת</h1>
+        <h1 @click="stateTest">כותרת</h1>
         <p>קצת הסבר?</p>
 
-        <!-- ChapterTestQuestions -->
-        <br>
-        {{ ChapterTestQuestions[0] }}
-        <br>
-        <!-- {{ ChapterTestQuestions[SelectedChapter].length }} -->
+        <!-- {{chapterTestQuestions[0][0]}} -->
+        <!-- <br> -->
+        {{chapterTestQuestions[currentChapter][0].length}}
 
         <div
           class="row-selection-container"
@@ -26,7 +24,7 @@
               :class="['chapter-' + index]"
               @click="changeOption('chapter', index)"
             >
-              <!-- :class="{ ['active-chapter-' + index]: SelectedChapter }" -->
+              <!-- :class="{ ['active-chapter-' + index]: selectedChapter }" -->
               <div class="selection-circle-text chapter-circle-text">
                 <div>
                   <b>{{ chapterName }}</b>
@@ -43,7 +41,7 @@
           <div class="test-selection-container">
             <div
               class="selection-circle-container"
-              v-for="index in numOfTestsWIP"
+              v-for="index in chapterTestQuestions[currentChapter][0].length"
               :key="index"
               @click="changeOption('test', index)"
             >
@@ -94,19 +92,29 @@ export default {
   name: "Options",
   data() {
     return {
-      // test: this.ChapterTestQuestions,
-      // numOfTestsWIP: this.ChapterTestQuestions[this.SelectedChapter],
-      // numOfTestsWIP: this.ChapterTestQuestions[0],
+      currentChapter: 0,
+      currentTest: 0,
     };
   },
   methods: {
     changeOption(currentOption, index) {
       let dataToPass = [currentOption, index];
+      console.log(dataToPass);
       this.$store.commit("changeOption", dataToPass);
     },
     startTest(newPage) {
       this.$store.commit("changePage", newPage);
     },
+    stateTest() {
+      console.log("in state test");
+
+      // console.log(this.chapterTestQuestions[0][0]);
+      // console.log(this.chapterTestQuestions[0][0].length);
+      // console.log(this.chapterTestQuestions[0][this.selectedChapter].length);
+
+      console.log("testType: " + this.testType);
+      console.log("selectedChapter: " + this.selectedChapter);
+    }
   },
   computed: {
     testType() {
@@ -121,13 +129,13 @@ export default {
     isFeedbackActice() {
       return this.$store.state.isImmediateFeedback;
     },
-    SelectedChapter() {
-      return this.$store.state.SelectedChapter;
+    selectedChapter() {
+      return this.$store.state.selectedChapter;
     },
-    SelectedTest() {
-      return this.$store.state.SelectedTest;
+    selectedTest() {
+      return this.$store.state.selectedTest;
     },
-    ChapterTestQuestions() {
+    chapterTestQuestions() {
       return this.$store.state.ChapterTestQuestions;
     },
   },
@@ -245,6 +253,11 @@ export default {
   border: 0.3em var(--purple) solid;
 }
 
+.selection-circle-container:hover {
+  -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(8, 96, 144, 0.6);
+  -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(8, 96, 144, 0.6);
+  box-shadow: 0 0 0.1px 0.8vmin rgba(8, 96, 144, 0.6);
+}
 .chapter-0:hover {
   -webkit-box-shadow: 0 0 0.1px 0.8vmin rgba(255, 173, 173, 0.6);
   -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(255, 173, 173, 0.6);

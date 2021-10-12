@@ -12,7 +12,7 @@ export default createStore({
         chapterNames: ["אנלוגיה מילולית", "חשיבה כמותית", "הבנת הוראות", "אנלוגיה צורנית", "מבחן צורני חדש"],
         
         testType: -1,
-        SelectedChapter: 0,
+        selectedChapter: 0,
         selectedTest: 0,
         isOnTime: true,
         isImmediateFeedback: false,
@@ -38,7 +38,8 @@ export default createStore({
             let index = dataPassed[1]
             switch (optionToChange) {
                 case 'chapter':
-                    state.SelectedChapter = index;
+                    state.selectedChapter = index;
+                    console.log(state.selectedChapter);
                     break;
                 case 'test':
                     state.selectedTest = index;

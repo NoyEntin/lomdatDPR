@@ -2,7 +2,7 @@
     [
         [
             {
-                "question": "שאלה מספר 1",
+                "question": "1",
                 "answers": [
                     "תשובה מספר 1",
                     "תשובה מספר 2",
@@ -13,7 +13,7 @@
                 "relatedChapter": "0"
             },
             {
-                "question": "שאלה מספר 2",
+                "question": "2",
                 "answers": [
                     "תשובה מספר 1",
                     "תשובה מספר 2",
@@ -24,7 +24,7 @@
                 "relatedChapter": "0"
             },
             {
-                "question": "שאלה מספר 3",
+                "question": "3",
                 "answers": [
                     "תשובה מספר 1",
                     "תשובה מספר 2",
@@ -35,7 +35,7 @@
                 "relatedChapter": "0"
             },
             {
-                "question": "שאלה מספר 4",
+                "question": "4",
                 "answers": [
                     "תשובה מספר 1",
                     "תשובה מספר 2",
@@ -46,7 +46,7 @@
                 "relatedChapter": "0"
             },
             {
-                "question": "שאלה מספר 5",
+                "question": "5",
                 "answers": [
                     "תשובה מספר 1",
                     "תשובה מספר 2",
