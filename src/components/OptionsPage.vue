@@ -39,9 +39,9 @@
             <div
               class="selection-circle-container"
               :key="index"
-              @click="changeOption('test', index)"
-              :class="{ 'active-option': index === selectedTest }"
-              v-for="index in chapterTestQuestions[selectedChapter].length"
+              @click="changeOption('test', index - 1)"
+              :class="{ 'active-option': index - 1 === selectedTest }"
+              v-for="index in numOfTests"
             >
               <div class="selection-circle-text">{{ index }}</div>
             </div>
@@ -96,12 +96,12 @@ export default {
   },
   methods: {
     changeOption(currentOption, index) {
+      console.log(currentOption + " " + index);
       let dataToPass = [currentOption, index];
-      console.log(dataToPass);
       this.$store.commit("changeOption", dataToPass);
     },
     resetSelectedTest() {
-      this.changeOption('test', 1);
+      this.changeOption("test", 0);
     },
     startTest(newPage) {
       this.$store.commit("changePage", newPage);
@@ -127,8 +127,15 @@ export default {
     selectedTest() {
       return this.$store.state.selectedTest;
     },
-    chapterTestQuestions() {
-      return this.$store.state.ChapterTestQuestions;
+    numOfTests() {
+      let questionsArr
+      if (this.testType === 'תרגול לפי פרקים') {
+        questionsArr = this.$store.state.ChapterTestQuestions[this.selectedChapter];
+      } else if (this.testType === 'מבחן סימולציה') {
+        questionsArr = this.$store.state.fullTestQuestions;
+      }
+      console.log(questionsArr.length);
+      return questionsArr.length;
     },
   },
 };
@@ -219,6 +226,10 @@ export default {
   width: 3.5em;
   height: 3.5em;
   background-size: contain;
+}
+
+.regular-btn {
+  margin: 3%;
 }
 
 .regular-btn-container {

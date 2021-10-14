@@ -72,7 +72,8 @@ body {
 .component-container {
     position: absolute;
     width: 100%;
-    height: max-content;
+    /* height: max-content; */
+    height: 100%;
     top: 10vh;
     overflow: auto;
     overflow-x: hidden;

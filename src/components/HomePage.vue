@@ -84,6 +84,10 @@ export default {
   /* scroll-padding-top: 10vh; */
 }
 
+.regular-btn {
+  margin: 3%;
+}
+
 .page {
   width: 70%;
   max-width: 1000px;

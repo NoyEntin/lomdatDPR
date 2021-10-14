@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 
 // import allTestQuestions from './testQuestions.json';
 import ChapterTestQuestions from './ChapterTestQuestions.json';
+import fullTestQuestions from './fullTestQuestions.json';
 
 export default createStore({
     state: {
@@ -13,11 +14,12 @@ export default createStore({
         
         testType: -1,
         selectedChapter: 0,
-        selectedTest: 1,
+        selectedTest: 0,
         isOnTime: true,
         isImmediateFeedback: false,
 
         ChapterTestQuestions: ChapterTestQuestions,
+        fullTestQuestions: fullTestQuestions,
 
         userTestQuestions: [],
 
@@ -41,12 +43,12 @@ export default createStore({
             state.isInfoShowing = !state.isInfoShowing;
         },
         changeOption(state, dataPassed) {
-            let optionToChange = dataPassed[0]
-            let index = dataPassed[1]
+            let optionToChange = dataPassed[0];
+            let index = dataPassed[1];
+            console.log(optionToChange + " " + index);
             switch (optionToChange) {
                 case 'chapter':
                     state.selectedChapter = index;
-                    console.log(state.selectedChapter);
                     break;
                 case 'test':
                     state.selectedTest = index;
@@ -63,9 +65,17 @@ export default createStore({
         },
         setUserTestQuestions(state) {
             if (state.testType === 'תרגול לפי פרקים') {
-                for (let i = 0; i < state.ChapterTestQuestions[state.selectedChapter][state.selectedTest].length; i++) {
-                    state.userTestQuestions.push(state.ChapterTestQuestions[state.selectedChapter][state.selectedTest][i]);
-                }
+                console.log("selectedChapter: " + state.selectedChapter);
+                console.log("selectedTest: " + state.selectedTest);
+                console.log("length: " + state.ChapterTestQuestions[state.selectedChapter][state.selectedTest].length);
+                state.userTestQuestions = ChapterTestQuestions[state.selectedChapter].slice(state.selectedTest, state.selectedTest + 1);
+                // console.log(state.userTestQuestions);
+                // for (let i = 0; i < state.ChapterTestQuestions[state.selectedChapter][state.selectedTest - 1].length; i++) {
+                //     state.userTestQuestions.push(state.ChapterTestQuestions[state.selectedChapter][state.selectedTest - 1][i]);
+                // }
+            } else if (state.testType === 'מבחן סימולציה') {
+                console.log("length" + state.fullTestQuestions.length);
+                state.userTestQuestions = fullTestQuestions.slice(state.selectedTest, state.selectedTest + 1);
             }
             console.log(state.userTestQuestions);
         }
