@@ -185,7 +185,7 @@ export default {
   width: fit-content;
   height: fit-content;
   padding: 0%;
-  margin: 2vmin;
+  margin: 1.5vmin;
   cursor: pointer;
 }
 
@@ -308,6 +308,10 @@ export default {
 
 .row-selection-container {
   flex-flow: row wrap;
+}
+
+.selection-circle-container {
+  margin: 2vmin;
 }
 
 
