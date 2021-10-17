@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-        <div class="row-selection-container">
+        <div class="only-row-selection-container">
           <div class="col-selection-container">
             <div class="col-text-selection-container">
               <p><b>בחר מבחן:</b></p>
@@ -155,7 +155,12 @@ export default {
 
 .row-selection-container {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
+}
+
+.only-row-selection-container {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .col-selection-container {
@@ -192,9 +197,9 @@ export default {
 .selection-circle-text {
   font-size: 1.8em;
   text-align: center;
-  width: 1.2em;
-  height: 1.2em;
-  line-height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
 }
 
 .chapter-circle-text {
@@ -216,15 +221,15 @@ export default {
 
 .time-selection-img {
   background-image: url("./../media/graphics/time.png");
-  width: 2.5em;
-  height: 2.5em;
+  width: 3em;
+  height: 3em;
   background-size: contain;
 }
 
 .feedback-selection-img {
   background-image: url("./../media/graphics/feedback.png");
-  width: 2.5em;
-  height: 2.5em;
+  width: 3em;
+  height: 3em;
   background-size: contain;
 }
 
