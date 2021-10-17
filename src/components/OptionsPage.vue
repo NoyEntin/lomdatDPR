@@ -155,6 +155,7 @@ export default {
 
 .row-selection-container {
   display: flex;
+  flex-flow: column nowrap;
 }
 
 .col-selection-container {
@@ -189,11 +190,11 @@ export default {
 }
 
 .selection-circle-text {
-  font-size: 2em;
+  font-size: 1.8em;
   text-align: center;
-  width: 1.5em;
-  height: 1.5em;
-  line-height: 1.5em;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
 }
 
 .chapter-circle-text {
@@ -205,7 +206,7 @@ export default {
 
 .chapter-circle-text div {
   font-size: 0.4em;
-  line-height: 1.5em;
+  line-height: 1.2em;
   height: fit-content;
   box-sizing: border-box;
   position: absolute;
@@ -215,15 +216,15 @@ export default {
 
 .time-selection-img {
   background-image: url("./../media/graphics/time.png");
-  width: 3.5em;
-  height: 3.5em;
+  width: 2.5em;
+  height: 2.5em;
   background-size: contain;
 }
 
 .feedback-selection-img {
   background-image: url("./../media/graphics/feedback.png");
-  width: 3.5em;
-  height: 3.5em;
+  width: 2.5em;
+  height: 2.5em;
   background-size: contain;
 }
 
@@ -302,4 +303,42 @@ export default {
   -moz-box-shadow: 0 0 0.1px 0.8vmin rgba(189, 178, 255, 0.6);
   box-shadow: 0 0 0.1px 0.8vmin rgba(189, 178, 255, 0.6);
 }
+
+@media only screen and (min-width: 768px) {
+
+.row-selection-container {
+  flex-flow: row wrap;
+}
+
+
+.selection-circle-text {
+  font-size: 2em;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+.chapter-circle-text {
+  width: 2em;
+  height: 2em;
+}
+
+.chapter-circle-text div {
+  font-size: 0.4em;
+  line-height: 1.5em;
+  height: fit-content;
+}
+
+.time-selection-img {
+  width: 3.5em;
+  height: 3.5em;
+}
+
+.feedback-selection-img {
+  width: 3.5em;
+  height: 3.5em;
+}
+
+}
+
 </style>

@@ -140,6 +140,10 @@ body {
     margin: 0vh;
 }
 
+.page-container {
+    padding-bottom: 10vh;
+}
+
 .page {
     /* width: 70%; */
     max-width: 1000px;
