@@ -76,6 +76,9 @@ export default {
   flex-flow: column nowrap;
   justify-content: center;
   justify-content: flex-start;
+  height: fit-content;
+  width: 100%;
+  padding-bottom: 10vh;
 
   /* scroll-snap-type: y mandatory; */
   /* overflow-x: hidden; */
@@ -89,21 +92,11 @@ export default {
 }
 
 .page {
-  width: 70%;
-  max-width: 1000px;
-  /* margin-right: 10%; */
   text-align: right;
   align-self: center;
-
-  /* scroll-snap-align: start; */
-  /* scroll-snap-stop: always; */
-
-  /* background-color: sandybrown; */
-}
-
-.page {
   text-align: center;
 }
+
 
 .page-2 {
   /* position: absolute; */
@@ -153,7 +146,7 @@ export default {
 }
 
 .chapter-circle-text {
-  font-size: 2em;
+  font-size: 4vmin;
   text-align: center;
   line-height: 1.2em;
 }
@@ -206,5 +199,21 @@ export default {
   box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6), 0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
 }
 
+@media only screen and (min-width: 768px) {
+  .chapter-circle {
+    width: 15vmin;
+    height: 15vmin;
+    max-width: 10em;
+    max-height: 10em;
+
+    margin: 2vmin;
+  }
+
+  .chapter-circle-text {
+    font-size: 2em;
+    line-height: 1.2em;
+  }
+
+}
 
 </style>

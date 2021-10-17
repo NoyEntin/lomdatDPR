@@ -74,14 +74,14 @@ body {
     width: 100%;
     /* height: max-content; */
     height: 100%;
-    top: 10vh;
+    top: 8vh;
     overflow: auto;
     overflow-x: hidden;
 }
 
 .top-bar {
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     background-color: var(--skyblue);
     position: fixed;
 }
@@ -89,8 +89,8 @@ body {
 .top-bar-heading {
     margin: 0%;
     position: absolute;
-    line-height: 10vh;
-    font-size: 2em;
+    line-height: 8vh;
+    font-size: 1.2em;
     text-indent: 3vh;
 }
 
@@ -100,8 +100,8 @@ body {
 }
 
 .top-bar-btn {
-    width: 7vh;
-    height: 7vh;
+    width: 5vh;
+    height: 5vh;
     margin: 1.5vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -125,10 +125,10 @@ body {
     background-color: var(--Sapphire-blue);
     color: var(--white);
     cursor: pointer;
-
-    line-height: 3em;
+    
+    line-height: 5vmin;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     margin: 3%;
 }
 
@@ -138,4 +138,41 @@ body {
 
 .regular-btn p {
     margin: 0vh;
+}
+
+.page {
+    /* width: 70%; */
+    max-width: 1000px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .component-container {
+        top: 10vh;
+    }
+    
+    .top-bar {
+        height: 10vh;
+    }
+    
+    .top-bar-heading {
+        line-height: 10vh;
+        font-size: 2em;
+    }
+
+    .top-bar-btn {
+        width: 7vh;
+        height: 7vh;
+    }
+
+    .page {
+        width: 70%;
+    }
+
+    .regular-btn {   
+        line-height: 3em;
+        font-size: 1.2em;
+    }
+
+
 }

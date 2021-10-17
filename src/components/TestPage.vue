@@ -6,8 +6,8 @@
       </div>
       <div class="page">
         <div class="timer-container" v-if="isTimeActice">זמן לשאלה</div>
-        <p> {{ userTestQuestions }} </p>
-        <p> {{ currentChapter }} </p>
+        <!-- <p> {{ userTestQuestions }} </p> -->
+        <!-- <p> {{ currentChapter }} </p> -->
         <div class="center-page">
           <p class="question bold">
             {{ userTestQuestions[currentChapter][currentQuestion].question }}
@@ -110,6 +110,7 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
+  padding-bottom: 10vh;
 }
 
 .nav-menu {
@@ -119,10 +120,8 @@ export default {
 }
 
 .page {
-  /* display: flex; */
   flex-flow: column nowrap;
   justify-content: flex-start;
-  /* align-content: center; */
   position: relative;
   width: 80%;
   margin: 0;

@@ -11,7 +11,7 @@
           class="nav-question"
           :class="[
             'chapter-question-' + selectedChapter,
-            { ['active-chapter-question-' + index]: index === currentQuestion },
+            { ['active-chapter-question-' + selectedChapter]: index - 1 === currentQuestion },
           ]"
           v-for="index in userTestQuestions[selectedChapter].length"
           :key="index"
@@ -60,7 +60,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .nav-container {
   width: 100%;
   height: 100%;
@@ -96,7 +96,7 @@ export default {
 }
 
 .nav-question {
-  border: 0.3em var(--green) solid;
+  /* border: 0.3em var(--green) solid; */
   background-color: var(--Sapphire-blue);
   border-radius: 100%;
   width: fit-content;
@@ -104,10 +104,11 @@ export default {
   padding: 0%;
   margin: 1vmin;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .nav-question-text {
-  font-size: 1.5em;
+    font-size: 1.5em;
   text-align: center;
   width: 1.2em;
   height: 1.2em;
@@ -115,19 +116,24 @@ export default {
 }
 
 .chapter-question-0 {
-  background-color: var(--lighten-red);
+    background-color: var(--lighten-red);
+    border: 0.3em var(--lighten-red) solid;
 }
 .chapter-question-1 {
-  background-color: var(--lighten-yellow);
+    background-color: var(--lighten-yellow);
+    border: 0.3em var(--lighten-yellow) solid;
 }
 .chapter-question-2 {
-  background-color: var(--lighten-green);
+    background-color: var(--lighten-green);
+    border: 0.3em var(--lighten-green) solid;
 }
 .chapter-question-3 {
-  background-color: var(--lighten-blue);
+    background-color: var(--lighten-blue);
+    border: 0.3em var(--lighten-blue) solid;
 }
 .chapter-question-4 {
-  background-color: var(--lighten-purple);
+    background-color: var(--lighten-purple);
+    border: 0.3em var(--lighten-purple) solid;
 }
 
 .active-chapter-question-0 {

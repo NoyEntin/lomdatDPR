@@ -145,11 +145,10 @@ export default {
 .page-container {
   display: flex;
   justify-content: center;
+  padding-bottom: 10vh;
 }
 
 .page {
-  width: 70%;
-  max-width: 1000px;
   margin-right: 10%;
   text-align: right;
 }
