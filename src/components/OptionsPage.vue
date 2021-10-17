@@ -176,7 +176,7 @@ export default {
 .test-selection-container {
   display: flex;
   flex-flow: row wrap;
-  width: 70%;
+  width: 100%;
 }
 
 .selection-circle-container {
@@ -337,6 +337,10 @@ export default {
 .feedback-selection-img {
   width: 3.5em;
   height: 3.5em;
+}
+
+.test-selection-container {
+  width: 70%;
 }
 
 }
