@@ -85,6 +85,7 @@ export default {
   /* overflow-y: scroll; */
   /* scroll-snap-type: y mandatory; */
   /* scroll-padding-top: 10vh; */
+  margin-bottom: 10vh;
 }
 
 .regular-btn {
