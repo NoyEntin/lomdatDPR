@@ -15,6 +15,7 @@
           ]"
           v-for="index in userTestQuestions[selectedChapter].length"
           :key="index"
+          @click="navQuestionClicked(index)"
         >
           <!-- :class="[ 'chapter-' + index, { ['active-chapter-' + index]: index ===
           selectedChapter }, ]" -->
@@ -39,7 +40,11 @@ export default {
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    navQuestionClicked (index) {
+      this.$emit('clicked', index)
+    }
+  },
   computed: {
     chapterNames() {
       if (this.$store.state.TestType === "מבחן סימולציה") {
@@ -64,7 +69,7 @@ export default {
 .nav-container {
   width: 100%;
   height: 100%;
-  background-color: lightseagreen;
+  /* background-color: lightseagreen; */
 }
 
 .chapter-heading {

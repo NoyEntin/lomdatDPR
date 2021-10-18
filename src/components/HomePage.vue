@@ -115,7 +115,7 @@ export default {
   /* background-color: rosybrown; */
   display: flex;
   justify-content: center;
-  height: 35vh;
+  height: 25vh;
   box-sizing: border-box;
 
   width: 100vw;
@@ -159,16 +159,16 @@ export default {
 }
 .chapter-1 {
   background-color: var(--yellow);
-  align-self: center;
+  align-self: end;
 }
 .chapter-2 {
   background-color: var(--green);
-  align-self: start;
-  margin-top: 4vh;
+  align-self: center;
+  margin-bottom: 4vh;
 }
 .chapter-3 {
   background-color: var(--blue);
-  align-self: center;
+  align-self: end;
 }
 .chapter-4 {
   background-color: var(--purple);
@@ -217,6 +217,11 @@ export default {
 }
 
 @media only screen and (min-width: 768px) {
+
+  .chapter-circles-container {
+  height: 35vh;
+  }
+
   .chapter-circle {
     width: 15vmin;
     height: 15vmin;

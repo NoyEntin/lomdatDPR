@@ -2,7 +2,7 @@
   <div class="component-container">
     <div class="page-container">
       <div class="nav-menu">
-        <NavMenu :currentQuestion="currentQuestion"></NavMenu>
+        <NavMenu :currentQuestion="currentQuestion" @clicked="moveToQuestion"></NavMenu>
       </div>
       <div class="page">
         <div class="timer-container" v-if="isTimeActice">זמן לשאלה</div>
@@ -19,7 +19,12 @@
           ></div>
           <div class="not-move-btn" v-else></div>
           <div class="answer-container">
-            <div class="answer" v-for="index in userTestQuestions[currentChapter][currentQuestion].answers.length" :key="index">
+            <div
+              class="answer"
+              v-for="index in userTestQuestions[currentChapter][currentQuestion]
+                .answers.length"
+              :key="index"
+            >
               <!-- userTestQuestions[currentChapter][currentQuestion].answers.length -->
               {{
                 userTestQuestions[currentChapter][currentQuestion].answers[
@@ -43,18 +48,19 @@
 </template>
 
 <script>
-
 import NavMenu from "./NavMenu.vue";
 
 export default {
   name: "TestPage",
   components: {
-    NavMenu
+    NavMenu,
   },
   data() {
     return {
       currentQuestion: 0,
       isEndOfTest: false,
+
+
       // {
       // "question": "1",
       // "answers": [
@@ -66,6 +72,7 @@ export default {
       // "rightAnswer": "0",
       // "relatedChapter": "0"
       // },
+
     };
   },
   methods: {
@@ -76,6 +83,9 @@ export default {
     prev() {
       this.currentQuestion--;
     },
+    moveToQuestion(newQuestion) {
+      this.currentQuestion = newQuestion - 1;
+    }
   },
   computed: {
     testType() {
@@ -108,13 +118,13 @@ export default {
 <style>
 .page-container {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   height: 100%;
 }
 
 .nav-menu {
   background-color: var(--skyblue);
-  width: 20%;
+  width: 100%;
   margin: 0;
 }
 
@@ -122,7 +132,7 @@ export default {
   flex-flow: column nowrap;
   justify-content: flex-start;
   position: relative;
-  width: 80%;
+  width: 100%;
   margin: 0;
   text-align: center;
 }
@@ -187,5 +197,19 @@ export default {
 
 .regular-btn {
   margin: 3% auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .page-container {
+    flex-flow: row nowrap;
+  }
+  .nav-menu {
+    background-color: var(--skyblue);
+    width: 20%;
+  }
+
+  .page {
+    width: 80%;
+  }
 }
 </style>
