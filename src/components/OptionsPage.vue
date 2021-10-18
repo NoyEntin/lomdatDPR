@@ -145,7 +145,7 @@ export default {
 .page-container {
   display: flex;
   justify-content: center;
-  padding-bottom: 10vh;
+  /* padding-bottom: 10vh; */
 }
 
 .page {

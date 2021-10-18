@@ -65,7 +65,7 @@ export default {
     },
     openInfo(chapterName, index) {
       this.$store.commit("toggleInfo", chapterName, index);
-    }
+    },
   },
 };
 </script>
@@ -78,7 +78,7 @@ export default {
   justify-content: flex-start;
   height: fit-content;
   width: 100%;
-  padding-bottom: 10vh;
+  /* padding-bottom: 10vh; */
 
   /* scroll-snap-type: y mandatory; */
   /* overflow-x: hidden; */
@@ -96,7 +96,6 @@ export default {
   align-self: center;
   text-align: center;
 }
-
 
 .page-2 {
   /* position: absolute; */
@@ -136,6 +135,8 @@ export default {
   max-height: 10em;
 
   padding: 0%;
+  /* position: absolute; */
+
   margin: 2vmin;
   cursor: pointer;
   display: flex;
@@ -161,8 +162,8 @@ export default {
 }
 .chapter-2 {
   background-color: var(--green);
-  align-self: end;
-  margin-bottom: 4vh;
+  align-self: start;
+  margin-top: 4vh;
 }
 .chapter-3 {
   background-color: var(--blue);
@@ -174,29 +175,44 @@ export default {
 }
 
 .chapter-0:hover {
-  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6), 0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
-  -moz-box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6), 0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
-  box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6), 0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
+  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
+  -moz-box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
+  box-shadow: 0 0 0.1px 1vmin rgba(255, 173, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(255, 173, 173, 0.2);
 }
 .chapter-1:hover {
-  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6), 0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
-  -moz-box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6), 0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
-  box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6), 0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
+  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6),
+    0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
+  -moz-box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6),
+    0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
+  box-shadow: 0 0 0.1px 1vmin rgba(249, 246, 144, 0.6),
+    0 0 0.1px 2.5vmin rgba(249, 246, 144, 0.3);
 }
 .chapter-2:hover {
-    -webkit-box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6), 0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
-  -moz-box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6), 0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
-  box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6), 0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
+  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
+  -moz-box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
+  box-shadow: 0 0 0.1px 1vmin rgba(187, 255, 173, 0.6),
+    0 0 0.1px 2.5vmin rgba(187, 255, 173, 0.3);
 }
 .chapter-3:hover {
-  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6), 0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
-  -moz-box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6), 0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
-  box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6), 0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
+  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
+  -moz-box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
+  box-shadow: 0 0 0.1px 1vmin rgba(155, 246, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(155, 246, 255, 0.3);
 }
 .chapter-4:hover {
-  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6), 0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
-  -moz-box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6), 0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
-  box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6), 0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
+  -webkit-box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
+  -moz-box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
+  box-shadow: 0 0 0.1px 1vmin rgba(189, 178, 255, 0.6),
+    0 0 0.1px 2.5vmin rgba(189, 178, 255, 0.2);
 }
 
 @media only screen and (min-width: 768px) {
@@ -214,6 +230,31 @@ export default {
     line-height: 1.2em;
   }
 
-}
+  .chapter-circle {
+    width: 15vmin;
+    height: 15vmin;
+    max-width: 10em;
+    max-height: 10em;
 
+    padding: 0%;
+    margin: 2vmin;
+  }
+
+  .chapter-0 {
+    align-self: start;
+  }
+  .chapter-1 {
+    align-self: center;
+  }
+  .chapter-2 {
+    align-self: end;
+    margin-bottom: 4vh;
+  }
+  .chapter-3 {
+    align-self: center;
+  }
+  .chapter-4 {
+    align-self: start;
+  }
+}
 </style>
