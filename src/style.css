@@ -142,6 +142,7 @@ body {
 
 .page-container {
     /* padding-bottom: 10vh; */
+    margin-bottom: 10vh;
 }
 
 .page {
