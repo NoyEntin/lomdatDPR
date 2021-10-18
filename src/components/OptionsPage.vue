@@ -147,6 +147,7 @@ export default {
   justify-content: center;
   margin-bottom: 10vh;
   /* padding-bottom: 10vh; */
+  height: max-content;
 }
 
 .page {
