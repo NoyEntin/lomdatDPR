@@ -1,0 +1,90 @@
+<template>
+  <div class="test-timer" @click="timer">
+    timer
+
+    <div id="countdown">
+      <div id="countdown-number">{{ timerCounter }}</div>
+      <svg>
+        <circle r="18" cx="20" cy="20"></circle>
+      </svg>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TestTimer",
+  components: {},
+  data() {
+    return {
+      timerCounter: 10,
+    };
+  },
+  methods: {
+    timer() {
+      setTimeout(() => {
+        if (this.timerCounter > 0) {
+          this.timerCounter--;
+          this.timer();
+        } else {
+          // gg go next
+          // this.endTest();
+        }
+      }, 1000);
+    },
+  },
+  computed: {},
+};
+</script>
+
+<style scoped>
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 113px;
+  }
+}
+
+.test-timer {
+  background-color: mediumslateblue;
+}
+
+#countdown {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+}
+
+#countdown-number {
+  color: white;
+  display: inline-block;
+  line-height: 40px;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+  stroke-dasharray: 113px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: white;
+  fill: none;
+  animation: countdown 10s linear 1 forwards;
+}
+
+@media only screen and (min-width: 768px) {
+}
+</style>

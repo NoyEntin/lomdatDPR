@@ -1,7 +1,7 @@
 <template>
-  <div class="nav-container">
+  <div class="nav">
     <!-- <div class="chapter-heading-container"> -->
-    <div v-for="(chapterName, index) in chapterNames" :key="index">
+    <div v-for="(chapterName, index) in chapterNames" :key="index" class="nav-container">
       <div class="chapter-heading" :class="['chapter-' + index]">
         {{ chapterName }}
         {{ currentQuestion }}
@@ -11,7 +11,10 @@
           class="nav-question"
           :class="[
             'chapter-question-' + selectedChapter,
-            { ['active-chapter-question-' + selectedChapter]: index - 1 === currentQuestion },
+            {
+              ['active-chapter-question-' + selectedChapter]:
+                index - 1 === currentQuestion,
+            },
           ]"
           v-for="index in userTestQuestions[selectedChapter].length"
           :key="index"
@@ -41,9 +44,9 @@ export default {
     },
   },
   methods: {
-    navQuestionClicked (index) {
-      this.$emit('clicked', index)
-    }
+    navQuestionClicked(index) {
+      this.$emit("clicked", index);
+    },
   },
   computed: {
     chapterNames() {
@@ -66,16 +69,22 @@ export default {
 </script>
 
 <style scoped>
-.nav-container {
+.nav {
   width: 100%;
   height: 100%;
   /* background-color: lightseagreen; */
+}
+
+.nav-container {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .chapter-heading {
   width: 100%;
   padding: 0.8vmin 0vmin;
   font-size: 1.2em;
+  line-height: 2em;
 }
 
 .chapter-0 {
@@ -98,6 +107,8 @@ export default {
   /* background-color: mediumslateblue; */
   display: flex;
   flex-flow: row wrap;
+  width: calc(100% - 7em);
+  align-self: flex-end;
 }
 
 .nav-question {
@@ -113,7 +124,7 @@ export default {
 }
 
 .nav-question-text {
-    font-size: 1.5em;
+  font-size: 1.5em;
   text-align: center;
   width: 1.2em;
   height: 1.2em;
@@ -121,24 +132,24 @@ export default {
 }
 
 .chapter-question-0 {
-    background-color: var(--lighten-red);
-    border: 0.3em var(--lighten-red) solid;
+  background-color: var(--lighten-red);
+  border: 0.3em var(--lighten-red) solid;
 }
 .chapter-question-1 {
-    background-color: var(--lighten-yellow);
-    border: 0.3em var(--lighten-yellow) solid;
+  background-color: var(--lighten-yellow);
+  border: 0.3em var(--lighten-yellow) solid;
 }
 .chapter-question-2 {
-    background-color: var(--lighten-green);
-    border: 0.3em var(--lighten-green) solid;
+  background-color: var(--lighten-green);
+  border: 0.3em var(--lighten-green) solid;
 }
 .chapter-question-3 {
-    background-color: var(--lighten-blue);
-    border: 0.3em var(--lighten-blue) solid;
+  background-color: var(--lighten-blue);
+  border: 0.3em var(--lighten-blue) solid;
 }
 .chapter-question-4 {
-    background-color: var(--lighten-purple);
-    border: 0.3em var(--lighten-purple) solid;
+  background-color: var(--lighten-purple);
+  border: 0.3em var(--lighten-purple) solid;
 }
 
 .active-chapter-question-0 {
@@ -155,5 +166,15 @@ export default {
 }
 .active-chapter-question-4 {
   border: 0.3em var(--purple) solid;
+}
+
+@media only screen and (min-width: 768px) {
+  .chapter-heading {
+    font-size: 1.2em;
+  }
+
+  .nav-question-container {
+    width: 100%;
+  }
 }
 </style>

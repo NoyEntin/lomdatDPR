@@ -2,10 +2,15 @@
   <div class="component-container">
     <div class="page-container">
       <div class="nav-menu">
-        <NavMenu :currentQuestion="currentQuestion" @clicked="moveToQuestion"></NavMenu>
+        <NavMenu
+          :currentQuestion="currentQuestion"
+          @clicked="moveToQuestion"
+        ></NavMenu>
       </div>
       <div class="page">
-        <div class="timer-container" v-if="isTimeActice">זמן לשאלה</div>
+        <div class="timer-container" v-if="isTimeActice">
+          <TestTimer></TestTimer>
+        </div>
         <!-- <p> {{ userTestQuestions }} </p> -->
         <!-- <p> {{ currentChapter }} </p> -->
         <div class="center-page">
@@ -49,17 +54,18 @@
 
 <script>
 import NavMenu from "./NavMenu.vue";
+import TestTimer from "./TestTimer.vue";
 
 export default {
   name: "TestPage",
   components: {
     NavMenu,
+    TestTimer,
   },
   data() {
     return {
       currentQuestion: 0,
       isEndOfTest: false,
-
 
       // {
       // "question": "1",
@@ -72,7 +78,6 @@ export default {
       // "rightAnswer": "0",
       // "relatedChapter": "0"
       // },
-
     };
   },
   methods: {
@@ -85,7 +90,7 @@ export default {
     },
     moveToQuestion(newQuestion) {
       this.currentQuestion = newQuestion - 1;
-    }
+    },
   },
   computed: {
     testType() {
@@ -115,7 +120,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page-container {
   display: flex;
   flex-flow: column nowrap;
@@ -123,7 +128,6 @@ export default {
 }
 
 .nav-menu {
-  background-color: var(--skyblue);
   width: 100%;
   margin: 0;
 }
@@ -210,6 +214,10 @@ export default {
 
   .page {
     width: 80%;
+  }
+
+  .nav-menu {
+    background-color: var(--skyblue);
   }
 }
 </style>
