@@ -4,6 +4,7 @@
       <div class="nav-menu">
         <NavMenu
           :currentQuestion="currentQuestion"
+          :currentChapter="currentChapter"
           @clicked="moveToQuestion"
         ></NavMenu>
       </div>
@@ -14,38 +15,58 @@
         <!-- <p> {{ userTestQuestions }} </p> -->
         <!-- <p> {{ currentChapter }} </p> -->
         <div class="center-page">
+                    
+          הכל
+          <br>
+          {{ userTestQuestions }}
+          <br>
+          עוד פעם הכל?
+          <br>
+          {{ userTestQuestions[0] }}
+          <br>
+          פרק
+          <br>
+          {{ userTestQuestions[0][0] }}
+          <br>
+          שאלה
+          <br>
+          {{ userTestQuestions[0][0][0] }}
+          
           <p class="question bold">
-            {{ userTestQuestions[currentChapter][currentQuestion].question }}
+            {{ userTestQuestions[0][currentChapter][currentQuestion].question }}
           </p>
           <div
             class="prev-btn move-btn"
             @click="prev()"
             v-if="currentQuestion > 0"
-          ></div>
+          >
+            <img class="arrow-img" src="./../media/graphics/arrow.png" alt="arrow" />
+          </div>
           <div class="not-move-btn" v-else></div>
           <div class="answer-container">
             <div
               class="answer"
-              v-for="index in userTestQuestions[currentChapter][currentQuestion]
-                .answers.length"
+              v-for="index in userTestQuestions[0][currentChapter][
+                currentQuestion
+              ].answers.length"
               :key="index"
             >
-              <!-- userTestQuestions[currentChapter][currentQuestion].answers.length -->
               {{
-                userTestQuestions[currentChapter][currentQuestion].answers[
+                userTestQuestions[0][currentChapter][currentQuestion].answers[
                   index - 1
                 ]
               }}
             </div>
           </div>
-          <div
-            class="next-btn move-btn"
-            @click="next()"
-            v-if="!isEndOfTest"
-          ></div>
+          <div class="next-btn move-btn" @click="next()" v-if="!isEndOfTest">
+            <img class="arrow-img" src="./../media/graphics/arrow.png" alt="arrow" />
+          </div>
           <div class="not-move-btn" v-else></div>
           <!-- <div class="regular-btn" v-if="isFeedbackActice">בדוק תשובה</div> -->
         </div>
+        currentChapter === {{ currentChapter }}
+        <br>
+        currentQuestion === {{ currentQuestion }}
         <div class="regular-btn">הגש מבחן</div>
       </div>
     </div>
@@ -65,6 +86,7 @@ export default {
   data() {
     return {
       currentQuestion: 0,
+      currentChapter: this.selectedChapter,
       isEndOfTest: false,
 
       // {
@@ -82,11 +104,26 @@ export default {
   },
   methods: {
     next() {
-      // if (this.currentQuestion )
-      this.currentQuestion++;
+      // console.log(this.userTestQuestions[this.currentChapter].length - 1);
+      // console.log(this.currentQuestion);
+      if (
+        this.currentQuestion === this.userTestQuestions[0][this.currentChapter].length - 1
+      ) {
+        this.currentChapter++;
+        this.currentQuestion = 0;
+      } else {
+        this.currentQuestion++;
+      }
     },
     prev() {
-      this.currentQuestion--;
+      if (this.currentQuestion === 0 && this.currentChapter !== 0) {
+        this.currentChapter--;
+        this.currentQuestion =
+          this.userTestQuestions[this.currentChapter].length - 1;
+      } else {
+        this.currentQuestion--;
+      }
+      // this.currentQuestion--;
     },
     moveToQuestion(newQuestion) {
       this.currentQuestion = newQuestion - 1;
@@ -109,10 +146,12 @@ export default {
       console.log(this.$store.state.userTestQuestions);
       return this.$store.state.userTestQuestions;
     },
-    currentChapter() {
+    selectedChapter() {
       if (this.testType === "תרגול לפי פרקים") {
+        console.log("currentChapter === " + this.$store.state.selectedChapter);
         return this.$store.state.selectedChapter;
       } else {
+        console.log("currentChapter === " + 0);
         return 0;
       }
     },
@@ -133,6 +172,7 @@ export default {
 }
 
 .page {
+  /* display: flex; */
   flex-flow: column nowrap;
   justify-content: flex-start;
   position: relative;
@@ -159,6 +199,11 @@ export default {
   width: 5vmin;
   height: 10vmin;
   margin: 5%;
+}
+
+.arrow-img {
+  height: 10vmin;
+  min-height: 60px;
 }
 
 .not-move-btn {
@@ -207,6 +252,7 @@ export default {
   .page-container {
     flex-flow: row nowrap;
   }
+
   .nav-menu {
     background-color: var(--skyblue);
     width: 20%;
@@ -214,10 +260,7 @@ export default {
 
   .page {
     width: 80%;
-  }
-
-  .nav-menu {
-    background-color: var(--skyblue);
+    max-width: none;
   }
 }
 </style>

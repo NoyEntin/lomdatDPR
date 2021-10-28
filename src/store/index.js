@@ -65,19 +65,20 @@ export default createStore({
         },
         setUserTestQuestions(state) {
             if (state.testType === 'תרגול לפי פרקים') {
-                console.log("selectedChapter: " + state.selectedChapter);
-                console.log("selectedTest: " + state.selectedTest);
-                console.log("length: " + state.ChapterTestQuestions[state.selectedChapter][state.selectedTest].length);
-                state.userTestQuestions = ChapterTestQuestions[state.selectedChapter].slice(state.selectedTest, state.selectedTest + 1);
+                // console.log("selectedChapter: " + state.selectedChapter);
+                // console.log("selectedTest: " + state.selectedTest);
+                // console.log("length: " + state.ChapterTestQuestions[state.selectedChapter][state.selectedTest].length);
+                // state.userTestQuestions = ChapterTestQuestions[state.selectedChapter].slice(state.selectedTest, state.selectedTest + 1);
+                state.userTestQuestions.push(ChapterTestQuestions[state.selectedChapter].slice(state.selectedTest, state.selectedTest + 1));
                 // console.log(state.userTestQuestions);
                 // for (let i = 0; i < state.ChapterTestQuestions[state.selectedChapter][state.selectedTest - 1].length; i++) {
                 //     state.userTestQuestions.push(state.ChapterTestQuestions[state.selectedChapter][state.selectedTest - 1][i]);
                 // }
             } else if (state.testType === 'מבחן סימולציה') {
-                console.log("length" + state.fullTestQuestions.length);
+                // console.log("length" + state.fullTestQuestions.length);
                 state.userTestQuestions = fullTestQuestions.slice(state.selectedTest, state.selectedTest + 1);
             }
-            console.log(state.userTestQuestions);
+            // console.table(state.userTestQuestions);
         }
     },
     actions: {

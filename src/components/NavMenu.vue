@@ -1,28 +1,28 @@
 <template>
   <div class="nav">
     <!-- <div class="chapter-heading-container"> -->
-    <div v-for="(chapterName, index) in chapterNames" :key="index" class="nav-container">
-      <div class="chapter-heading" :class="['chapter-' + index]">
+    <div v-for="(chapterName, chapterIndex) in chapterNames" :key="chapterIndex" class="nav-container">
+      <div class="chapter-heading" :class="['chapter-' + chapterIndex]">
+        {{ currentChapter }}
         {{ chapterName }}
-        {{ currentQuestion }}
       </div>
       <div class="nav-question-container">
         <div
           class="nav-question"
           :class="[
-            'chapter-question-' + selectedChapter,
+            'chapter-question-' + chapterIndex,
             {
-              ['active-chapter-question-' + selectedChapter]:
-                index - 1 === currentQuestion,
+              ['active-chapter-question-' + chapterIndex]:
+                questionsIndex - 1 === currentQuestion && currentChapter === chapterIndex,
             },
           ]"
-          v-for="index in userTestQuestions[selectedChapter].length"
-          :key="index"
-          @click="navQuestionClicked(index)"
+          v-for="questionsIndex in userTestQuestions[0][selectedChapter].length"
+          :key="questionsIndex"
+          @click="navQuestionClicked(questionsIndex)"
         >
           <!-- :class="[ 'chapter-' + index, { ['active-chapter-' + index]: index ===
           selectedChapter }, ]" -->
-          <div class="nav-question-text">{{ index }}</div>
+          <div class="nav-question-text">{{ questionsIndex }}</div>
         </div>
       </div>
     </div>
@@ -42,6 +42,10 @@ export default {
       type: Number,
       required: true,
     },
+    currentChapter: {
+      type: Number,
+      required: true,
+    },
   },
   methods: {
     navQuestionClicked(index) {
@@ -49,8 +53,12 @@ export default {
     },
   },
   computed: {
+    testType() {
+      return this.$store.state.currentPageHeading;
+    },
     chapterNames() {
-      if (this.$store.state.TestType === "מבחן סימולציה") {
+      // console.log(this.testType);
+      if (this.testType === "מבחן סימולציה") {
         return this.$store.state.chapterNames;
       } else {
         return [
@@ -72,6 +80,7 @@ export default {
 .nav {
   width: 100%;
   height: 100%;
+  /* position: fixed; */
   /* background-color: lightseagreen; */
 }
 

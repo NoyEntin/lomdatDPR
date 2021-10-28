@@ -5,7 +5,12 @@
     <div id="countdown">
       <div id="countdown-number">{{ timerCounter }}</div>
       <svg>
-        <circle r="18" cx="20" cy="20"></circle>
+        <circle
+          r="18"
+          cx="20"
+          cy="20"
+          :style="{ 'animation-duration': TimerDuration }"
+        ></circle>
       </svg>
     </div>
   </div>
@@ -17,7 +22,8 @@ export default {
   components: {},
   data() {
     return {
-      timerCounter: 10,
+      timerCounter: 20,
+      TimerDuration: this.timerCounter + "s",
     };
   },
   methods: {
@@ -28,12 +34,17 @@ export default {
           this.timer();
         } else {
           // gg go next
-          // this.endTest();
         }
       }, 1000);
     },
   },
   computed: {},
+  mounted() {
+    this.$nextTick(function () {
+      // Code that will run only after the entire view has been rendered
+      this.timer();
+    });
+  },
 };
 </script>
 
@@ -49,6 +60,7 @@ export default {
 
 .test-timer {
   background-color: mediumslateblue;
+    position: fixed;
 }
 
 #countdown {
